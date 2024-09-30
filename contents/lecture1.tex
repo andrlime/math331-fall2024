@@ -1,0 +1,32 @@
+\section{September 25, 2024}
+
+\subsection{Logistics}
+Fortnightly quiz; fortnightly problem sets (alternating). Quizzes are \textbf{very easy}. Midterm during Halloween week. Final exam. Algebra by Artin is the textbook. Term paper on Waffle word game and permutation groups.
+
+\subsection{Permutations and Transpositions}
+\begin{definition}
+    A \textbf{permutation} of a set $A$ is some bijection to itself, i.e.
+    \begin{align}
+        \sigma: A \longleftrightarrow A
+    \end{align}
+\end{definition}
+\begin{definition}
+    A \textbf{transposition} is a permutation that changes exactly two elements.
+\end{definition}
+\begin{lemma}
+    Two is the minimum number of elements changed
+\end{lemma}
+\begin{proof}
+    Changing one but not another is a contradiction, as that cannot be injective and therefore not bijective.
+\end{proof}
+\begin{lemma}
+    Suppose $\sigma_1, \sigma_2$ are permutations. Then, $\sigma_1\sigma_2$ is another, and is also bijective. So, given some desired permutation, it can be written as a sequence of transpositions.
+\end{lemma}
+\begin{proof}
+    The base case (two elements) is trivial. We can easily transpose them as needed. Suppose we can write some set of $n-1$ elements as a sequence of transpositions. Then, we can write $n$ elements as a sequence of transpositions:
+    \begin{enumerate}
+        \item If the $n$-th element is correctly mapped, then we hold it and permute the first $n-1$ elements, which works by the inductive hypothesis.
+        \item If not, then we can transpose the $n$-th element such that it \textit{is} in the correct place, and then permute the first $n-1$ elements. \qedhere
+    \end{enumerate}
+\end{proof}
+Note that the order of permutations does matter (simple examples were written out in class and can be seen in the notes). A group is some set with a law of composition. Permutations are a group.

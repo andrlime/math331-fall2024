@@ -1,0 +1,155 @@
+\section{September 27, 2024}
+
+\subsection{Initial Definitions}
+\begin{definition}
+    A \textbf{group} $\genericgroup$ is a set along with a ``law of composition''
+    \begin{align}
+        \sigma: \genericgroup \times \genericgroup \to \genericgroup
+    \end{align}
+    i.e. a way to take two elements of $\genericgroup$ to get a third element of $\genericgroup$. This law of composition $\sigma$ must satisfy some axioms:
+    \begin{enumerate}
+        \item There exists a special element $e \in \genericgroup$ such that
+        \begin{align}
+            e \cdot g = g \cdot e = g \qsp \forall g \in \genericgroup
+        \end{align}
+        (identity element)
+        \item $\sigma$ should be associative, i.e. for some triple of elements
+        \begin{align}
+            g_1 \cdot g_2 \cdot g_3 = (g_1 \cdot g_2) \cdot g_3 = g_1 \cdot (g_2 \cdot g_3)
+        \end{align}
+        (associativity)
+        \item For all $g \in \genericgroup$ there should be some inverse, i.e.
+        \begin{align}
+            \exists g^{-1} \mid g \cdot g^{-1} = g^{-1} \cdot g = e \mid \forall g \in \genericgroup \qsp g^{-1} \text{ is the inverse of } g
+        \end{align}
+        (inverse)
+    \end{enumerate}
+\end{definition}
+One goal of this quarter is to abstractly work with groups; another is to have a big repository of examples, as that helps develop intuition in group theory.
+
+\subsubsection{Some Examples}
+\begin{example}
+    Set $\genericgroup$ to be $\real$, $\rational$, $\integer$, or $\complex$. Use $+$ as the law of composition.
+    \begin{enumerate}
+        \item The identity element is $0$
+        \item Associativity is trivial
+        \item Inverse is negative
+    \end{enumerate}
+\end{example}
+This is a fairly boring example. What about multiplying?
+\begin{example}
+    Set $\genericgroup$ to be $\real$, $\rational$, $\integer$, or $\complex$. Use $\times$ as the law of composition.
+    \begin{enumerate}
+        \item For integers, not a group because $1/n \in \integer \mid \forall n \in \integer$ is not true.
+        \item Rationals? Then zero does not have a multiplicative inverse.
+        \item What about $\rational - \{ 0 \}$? This \textit{is} a group if the law of composition is $\times$.
+    \end{enumerate}
+\end{example}
+These examples are infinite groups.
+
+\subsection{Some Properties}
+\begin{definition}
+    An group is called \textbf{abelian} or \textbf{commutative} if for every pair of elements $g_1, g_2 \in \genericgroup$,
+    \begin{align}
+        g_1g_2 = g_2g_1
+    \end{align}
+    (note this is not multiplication; it's whatever the law of composition is)
+\end{definition}
+\begin{proposition}
+    Let $\genericgroup$ be a group and $e \in \genericgroup$ be the identity element. Suppose there exists $e'$ such that
+    \begin{align}
+        e'g = ge' = g \qsp \forall g \in \genericgroup
+    \end{align}
+    Then, $e' \equiv e$.
+\end{proposition}
+\begin{proof}
+    Pick $g = e$. Then,
+    \begin{align}
+        e'e = ee' = e
+    \end{align}
+    But, a group element tells us that anything multiplied by the identity gives us that element, so $e'e = e'$. So,
+    \begin{align}
+        e' = e & \qedhere
+    \end{align}
+\end{proof}
+
+\begin{proposition}
+    (\textbf{Cancellation}) Let $\genericgroup$ be a group. Let $g_1,g_2 \in \genericgroup$. Let $h \in \genericgroup$ such that $hg_1 = hg_2$. Then,
+    \begin{align}
+        g_1 = g_2
+    \end{align}
+    (the same holds for $g_1h = g_2h$)
+\end{proposition}
+\begin{proof}
+    Given
+    \begin{align}
+        hg_1 = hg_2
+    \end{align}
+    Then, let $h^{-1}$ be the inverse of $h$. It follows that
+    \begin{align}
+        h^{-1} (hg_1) = h^{-1} (hg_2)
+    \end{align}
+    Because of associativity,
+    \begin{align}
+        (h^{-1} h)g_1 = (h^{-1} h)g_2 &\implies e g_1 = e g_2 & e \text{ is identity}\\
+        &\implies g_1 = g_2
+    \end{align}
+\end{proof}
+
+\begin{corollary}
+    Let $\genericgroup$ be some group.
+    \begin{enumerate}
+        \item Let $e', g \in \genericgroup$ such that
+        \begin{align}
+            e' g = g
+        \end{align}
+        Then, $e' = e$.
+        \item Let $g \in \genericgroup$ and let $h \in \genericgroup$ such that
+        \begin{align}
+            hg = e
+        \end{align}
+        Then, $h = g^{-1}$
+    \end{enumerate}
+\end{corollary}
+
+\subsubsection{Subtraction et. al.}
+\begin{example}
+    \textbf{(Non-associative laws of association)} Some examples
+    \begin{enumerate}
+        \item Subtraction on $\integer$
+        \begin{align}
+            (a - b) - c \ne a - (b - c)
+        \end{align}
+        \item Exponentiation on $\natural$
+        \begin{align}
+            (2^3)^4 &\ne 2^{(3^4)}\\
+            2^{12} &\ne 2^{81}
+        \end{align}
+    \end{enumerate}
+\end{example}
+Subtraction can be generalized to other groups.
+\begin{proposition}
+    Let $(G, \cdot)$ be a group. Define $*$ as $g * h \equiv g \cdot h^{-1}$. 
+    \begin{enumerate}
+        \item Is $(G, *)$ a group?
+        \item Is $*$ associative?
+    \end{enumerate}
+    % rational division
+\end{proposition}
+\begin{example}
+    Take $(\{ e \}, \cdot)$ as a group. It's trivial that this is a group even with the shenanigans in Proposition 2.9.
+\end{example}
+
+\subsubsection{Modular Group Example}
+Group $\integer$ into even and odd integers, $\text{even}$ and $\text{odd}$. Clearly,
+\begin{align}
+    \text{even} \cup_{\text{disjoint}} \text{odd} = \integer
+\end{align}
+Define $\integer / 2 \integer \equiv \{ \text{even}, \text{odd} \}$. We are treating these sets as elements. Then, we can define a law of composition:
+\begin{align}
+    \text{even} + \text{even} &= \text{even}\\
+    \text{odd} + \text{even} &= \text{odd}\\
+    \text{even} + \text{odd} &= \text{odd}\\
+    \text{odd} + \text{odd} &= \text{even}
+\end{align}
+This is a group. This will be generalized.
